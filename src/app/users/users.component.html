@@ -1,0 +1,66 @@
+<div class="container-fluid">
+
+    <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+    <div class="search">
+      <input type="text" placeholder="          search..........." [(ngModel)]="filterValue" (input)="filterList()"/>
+      <span class="search-icon"><i class="fa fa-search"></i></span></div>
+      <div class="UserBox">
+    <table mat-table [dataSource]="dataSource" class="table_">
+      <ng-container matColumnDef="username" >
+        <th mat-header-cell *matHeaderCellDef style="width:250px;color:#FFF;background-color: #fcdbb7;">Username </th>
+        <td mat-cell *matCellDef="let element"  [routerLink]="['/user', element.id]"> {{element.username}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email" >
+        <th mat-header-cell *matHeaderCellDef style="color:#FFF;background-color: #fcdbb7;"> Email </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/user', element.id]"> {{element.email}} </td>
+      </ng-container>
+ 
+      <ng-container matColumnDef="image"> 
+        <th mat-header-cell *matHeaderCellDef style="width:60px;color:#FFF;background-color: #fcdbb7;"> Image </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/user', element.id]">
+          <div> 
+          <label  *ngIf="element.profile!=null && element.profile.image!=null;then trueBlock;else falseBlock"></label>
+         <ng-template  #trueBlock><img  style="width:40px;border-radius: 50%;height:40px;" [src]="element.profile.image" alt="User Image"/></ng-template>
+         <ng-template #falseBlock><img style="width:40px;border-radius: 50%;height:40px;" src="../../assets/images/user.png" alt="User Image"/></ng-template>
+</div> </td>
+      </ng-container>
+    
+    
+      <ng-container matColumnDef="select" >
+        <th mat-header-cell *matHeaderCellDef style="width:60px;color:#FFF;background-color: #fcdbb7;"> Select </th>
+        <td mat-cell *matCellDef="let element" >    
+          <div style="width:50px;">  
+            <button  class="menu_" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon style="color:#aaa">menu</mat-icon>
+              </button>
+            <mat-menu #menu="matMenu">
+            <button  mat-menu-item (click)="delete(element.username)">
+              <mat-icon style="color:#F00">delete</mat-icon>
+              <span >delete</span>
+            </button>
+            <button mat-menu-item (click)="downloadImage(element.profile.image)">
+                <mat-icon>get_app</mat-icon>
+              <span>Download</span>
+            </button>
+          </mat-menu></div></td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table></div>
+<div class="show_user">
+<div (click)="back_user()" class="back"><mat-icon>keyboard_backspace</mat-icon></div> 
+
+
+
+
+
+
+</div>
+
+
+
+ 
+</div>
+
+

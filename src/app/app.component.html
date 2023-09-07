@@ -1,0 +1,190 @@
+
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+ <div class="dachboard_left">
+  <ul class="list-group" id="list-group">
+    <div class="titel">
+        <div class="icon-with-text">
+        <mat-icon  class="icon" style="z-index: 30;margin-left: 6px;width:25px;height:25px;cursor: pointer;" (click)="open_story()" >extension</mat-icon>
+        <span>Checkcars</span>
+        </div>
+        <div class="icon-only">
+        <div class="story_show icon" (click)="open_story()"></div>
+        </div>
+        
+
+  </div>
+    <li class="list-group-item"  routerLink=""><mat-icon style="position: absolute;z-index:10">home</mat-icon><span style="position: absolute;left:50px;">home</span></li>
+    <li class="list-group-item" routerLink="mailBox/"><mat-icon style="position: absolute;z-index:10">mail</mat-icon><span style="position: absolute;left:50px;">Mail Box</span></li>
+    <li class="list-group-item" routerLink="story/"><mat-icon style="position: absolute;z-index:10">slow_motion_video</mat-icon><span style="position: absolute;left:50px;">Story</span></li>
+    <li class="list-group-item"><mat-icon style="position: absolute;z-index:10">euro_symbol</mat-icon><span style="position: absolute;left:50px;">sale</span></li>
+    <li class="list-group-item" routerLink="map"><mat-icon style="position: absolute;z-index:10">map</mat-icon><span style="position: absolute;left:50px;">Map</span></li>
+    <li class="list-group-item" (click)="ShowCategory()"><mat-icon  style="position: absolute;z-index:10">library_add</mat-icon><span style="position: absolute;left:50px;">new category</span></li>
+    <li class="list-group-item" routerLink="editProfile"><mat-icon style="position: absolute;z-index:10">info</mat-icon><span style="position: absolute;left:50px;">Profile</span></li>
+    <li class="list-group-item" routerLink="user"><mat-icon style="position: absolute;z-index:10">security</mat-icon><span style="position: absolute;left:50px;">users</span></li>
+    <li class="list-group-item" routerLink="about"><mat-icon style="position: absolute;z-index:10">info</mat-icon><span style="position: absolute;left:50px;">about</span></li>
+    <li class="footer_ list-group-item" (click)="logOut()"><mat-icon style="position: absolute;z-index:10;left:30%">power_settings_new</mat-icon><span style="position: absolute;left:40%;">Logout</span></li>
+  </ul>
+ </div>
+
+ <div class="display" style="display: none;">
+  <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+  <div class="story">
+    <ul class="line">
+      <li *ngFor="let value of items ;let i = index">
+        <div *ngIf="i==currentIndex " [ngStyle]="{ 'width.%': counter }" style="background-color: #dfb78d;height:2px;border-radius:5px;"></div>
+        <div *ngIf="i<currentIndex"  style="background-color: #dfb78d;height:2px;border-radius:5px;width:100%"></div>
+      </li>
+    </ul>
+    <div class="image">
+      <div class="info">
+        <img  class="image" src={{itemss}}><h6>{{titel}}</h6><h4>{{created_at}}</h4>
+        <div class="choice">
+          <button  class="menu_" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon style="color:#aaa">notes</mat-icon>
+              </button>
+          <mat-menu #menu="matMenu" class="select">
+            <button mat-menu-item (click)="downloadImage(itemss)">
+                <mat-icon>get_app</mat-icon>
+              <span>Download</span>
+            </button>
+          </mat-menu>
+
+
+        </div>
+      </div>
+        <img src={{itemss}}>
+        <div class="text">
+        <h1 style="font-size: 40px;">{{titel}}</h1>
+        <div class="appearProduct" (click)="appearProduct(productStory)">to product</div>
+      </div>
+        
+    </div>
+    <div (click)="left()" style="width:50%;height:100%;position: absolute;top:0px;"></div>
+    <div (click)="right()" style="width:50%;height:100%;position: absolute;right:0px;top:0px;"></div>
+  </div>
+ </div>  
+
+
+ <div class="behindList" (click)="behindList()"></div>
+ <div class="dachboardleftToNavbar">
+  <div class="hamburger" (click)="Hamburger()">  
+    <span class="barOne"></span>
+    <span class="barTwo"></span>
+    <span class="barThree"></span>
+  </div>
+  <div class="titelNavbar">
+    <div class="icon-with-textNavbar">
+    <mat-icon  class="iconNavbar" style="z-index: 11;margin-left: 6px;width:25px;height:25px;cursor: pointer;" (click)="open_story()">extension</mat-icon>
+    <span style="margin-left: 15px;">Checkcars</span>
+    </div>
+    <div class="icon-only">
+    <div class="story_show iconNavbar" (click)="open_story()"></div>
+    </div>
+</div>
+ </div>
+
+ <ul class="ListNavbar">
+  <li   routerLink=""><mat-icon >home</mat-icon><span style="width:130px;margin-left: 10px;">home</span></li>
+  <li  routerLink="mailBox"><mat-icon >mail</mat-icon><span style="width:130px;margin-left: 10px;">Mail Box</span></li>
+  <li  routerLink="story/"><mat-icon>slow_motion_video</mat-icon><span style="width:130px;margin-left: 10px;">Story</span></li>
+  <li ><mat-icon s>euro_symbol</mat-icon><span style="width:130px;margin-left: 10px;">sale</span></li>
+  <li  routerLink="map"><mat-icon>map</mat-icon><span style="width:130px;margin-left: 10px;">Map</span></li>
+  <li  (click)="ShowCategory()"><mat-icon>library_add</mat-icon><span style="width:130px;margin-left: 10px;">new category</span></li>
+  <li  routerLink="editProfile"><mat-icon>info</mat-icon><span style="width:130px;margin-left: 10px;">Profile</span></li>
+  <li routerLink="user"><mat-icon>verified_user</mat-icon><span style="width:130px;margin-left: 10px;">users</span></li>
+  <li routerLink="about"><mat-icon>info</mat-icon><span style="width:130px;margin-left: 10px;">about</span></li>
+  <li class="footer_" (click)="logOut()"><mat-icon>power_settings_new</mat-icon><span style="width:130px;margin-left: 10px;">Logout</span></li>
+ </ul>
+</div>
+
+<div class="flotter">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f7cb9c" fill-opacity="1" d="M0,192L480,160L960,96L1440,256L1440,320L960,320L480,320L0,320Z"></path></svg>
+<div class='fotterMe' routerLink="about">abdulwadoud</div>
+</div>
+
+<div class="add_box" style="display:none"> 
+<div (click)="back_()" class="back_"><mat-icon>keyboard_backspace</mat-icon></div>
+
+<div class="box_insideCategory">
+<div class="form-group">
+   <div class="image-upload image_1">
+     <label  for="inputCategory">
+   <label *ngIf="imageFileName;then trueBlock; else falseBlock"></label>
+     <ng-template #trueBlock>
+   <img  [src]="imageFileName"  style="width:200px;height:150px;"></ng-template>
+   <ng-template #falseBlock><mat-icon  class="set_image_big">library_add</mat-icon></ng-template>
+ </label>
+   <input type="file" class="form-control" id="inputCategory" (change)="onFileSelectedCategory($event)"  #fileInput_1 hidden>
+   
+ </div>
+</div>
+<input matInput placeholder="enter name Category" value="" type="text" maxlength="10" [(ngModel)]="titelAddCategory"  aria-describedby="emailHelp" class="InputTittle">
+
+ 
+<button  (click)="postCategory()" class='btn btn-info buttonCategory'
+><mat-icon>done</mat-icon><span style="position: relative;top:-6px;right:0px;">Add</span></button>
+<mat-icon (click)="editCrooper()" class="cropperIcon">format_shapes</mat-icon>
+</div>
+
+</div>
+
+
+<div class="cropper" style="display: none;">
+
+<div class="edit_Tools">
+  <div class="animationDotted"></div>
+  <div class="cropperAnimation">
+
+    <image-cropper style="z-index: 50;position: absolute;box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);;width:100%;height:400px"
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [containWithinAspectRatio]="containWithinAspectRatio"
+            [aspectRatio]="4 / cropperShape"
+            [resizeToWidth]="256"
+            [cropperMinWidth]="128"
+            [onlyScaleDown]="true"
+            [roundCropper]="false"
+            [canvasRotation]="canvasRotation"
+            [transform]="transform"
+            [alignImage]="'left'"
+            format="png"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded()"
+            (cropperReady)="cropperReady($event)"
+            (loadImageFailed)="loadImageFailed()"
+        ></image-cropper>
+ 
+        <div class="tools">
+          <mat-icon (click)="rotateLeft()">rotate_left</mat-icon>
+          <mat-icon (click)="rotateRight()">rotate_right</mat-icon>
+          <mat-icon (click)="flipHorizontal()">flip_horizontal</mat-icon>
+          <mat-icon (click)="flipVertical()">flip_vertical</mat-icon>
+          <mat-icon (click)="toggleContainWithinAspectRatio()">crop_free</mat-icon>
+          <mat-icon (click)="resetImage()">refresh</mat-icon>
+          <mat-icon (click)="zoomOut()">zoom_out</mat-icon> 
+          <mat-icon (click)="zoomIn()">zoom_in</mat-icon>
+          <mat-icon (click)="shapes4x4()">crop_din</mat-icon>
+          <mat-icon (click)="shapes4x2()">crop_5_4</mat-icon>
+          <mat-icon (click)="shapes4x1()">crop_7_5</mat-icon>
+          <mat-icon style="background-color: #dfb78d;color:#FFF" (click)="setImage()">crop</mat-icon>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--
+<form (submit)="uploadPDF($event)">
+  <input type="file" (change)="onFile_Selected($event)" accept=".pdf" />
+  <button type="submit">Upload</button>
+</form>
+-->
+
+
+
+
+
+
+
+

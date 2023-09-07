@@ -1,0 +1,35 @@
+
+<div class="BoxHome">
+    <div (click)="showPreviousImage()" class="carousel-button " class="before"><mat-icon>keyboard_arrow_left</mat-icon></div>
+    <div (click)="showNextImage()" class="carousel-button " class="next" ><mat-icon>keyboard_arrow_right</mat-icon></div>
+    <div class="catigure" id="catigure">
+      <div *ngFor="let obj of listCategory">
+        <div class="car animations" (click)="OneCatigure(obj.id,obj.name)" routerLink="/category/{{obj.name}}/{{obj.id}}">
+            <img class="titel" [src]="obj.image"/>
+            <div class='count'>
+             </div>
+            <h1>{{obj.name}}</h1>
+        </div> 
+      </div>
+    </div></div>
+<div class="mapBox">
+<div class="map">
+    <google-map height="500px"
+            width="100%"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)">
+</google-map>
+</div></div>
+<div class='chartBoxPie'> 
+    <div class="BoxPie">
+    <canvas baseChart width="400" height="400"
+    [type]="'pie'"
+    [datasets]="pieChartDatasets"
+    [labels]="pieChartLabels"
+    [options]="pieChartOptions"
+    [plugins]="pieChartPlugins"
+    [legend]="pieChartLegend">
+  </canvas>
+</div></div>

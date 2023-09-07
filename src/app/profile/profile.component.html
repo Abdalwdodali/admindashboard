@@ -1,0 +1,65 @@
+<section class="vh-100" style="background-color: #FFF;position: absolute;right:0px;left:0px;top:0px;bottom:0px;z-index: 33;">
+    <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+  
+    <div class="container py-5 h-100" style="margin-top: 110px;">
+      <div class="row d-flex justify-content-center align-items-center h-100" >
+        <div class="col col-lg-6 mb-4 mb-lg-0" style="width:100%;min-height:auto;position: relative;top:-100px">
+          <div class="card mb-3" style="border-radius: .5rem;width:100%;height:auto;box-shadow:0px 0px 20px 5px rgba(0,0,0,.1);border:none;min-height:500px;" >
+            <div class="row g-0" style="height:auto;">
+              <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;position: relative;">
+                
+               
+
+                <div style="display: flex;justify-content: center;align-items: center;padding-top: 30px;">
+                  <label  *ngIf="image_background!=null;then trueBlock;else falseBlock" ></label>
+                 <ng-template  #trueBlock><img  class="backgroundImage img-fluid my-5" style="width:100%;height:200px;" [src]="image_background" alt="User Image"/></ng-template>
+                 <ng-template #falseBlock><div class="backgroundImage img-fluid my-5" style="background-color: #f7cb9c;width:100%;height:200px;;" alt="User Image"></div></ng-template>
+                 <div> 
+                  <label  *ngIf="image!=null;then trueBlockProfile;else falseBlockprofile"></label>
+                 <ng-template  #trueBlockProfile><img [src]="image"  alt="Avatar" class="img-fluid my-5 ImageProfile"/></ng-template>
+                 <ng-template #falseBlockprofile><div class="img-fluid my-5 ImageProfile" style="background-image: url(../../assets/images/user.png);background-size: cover;" alt="User Image"></div></ng-template>
+               </div>
+                </div>
+                <div style="font-size: 30px;margin-top: 20px;">{{username}}</div>
+                <div class="textarea_status_label" style="font-size: 25px;margin-top: 15px;">{{status}}</div>
+                
+              </div>
+              <div class="col-md-8" style="color:#f7cb9c;">
+                <div class="card-body p-4">
+                  <h6 class="tittel">Information</h6>
+                 
+                  <div class="row pt-1"  >
+                    <div class="col-6 mb-3" style="font-size: 20px;">
+                      <h6 style="font-size: 25px;">Email</h6>
+                      <p class="" style="color:#a5a5a5">{{email}}</p>
+                    </div>
+                    <div class="col-6 mb-3" style="font-size: 20px;">
+                      <h6 style="font-size: 25px;">Phone</h6>
+                      <p class="" style="color:#a5a5a5">{{telephone_Number}}</p>
+                    </div>
+                    <div class="col-6 mb-3" style="font-size: 20px;">
+                      <h6 style="font-size: 25px;">address</h6>
+                      <label class="" style="color:#a5a5a5;white-space: pre-line;">{{address}}</label>
+                    </div>
+                    <div class="col-6 mb-3" style="font-size: 20px;">
+                      <h6 style="font-size: 25px;">joined</h6>
+                      <p class="" style="color:#a5a5a5">{{date_joined}}</p>
+                    </div>
+                  </div>
+                  <h6 class="tittel" style="margin-top: 50px;">Social Media</h6>
+                
+             
+                  <div class="socialMedia">
+                    <a class="facebook" [href]="facebook" target="_blank"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                    <a class="twitter" [href]="twitter" target="_blank"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                    <a class="instagram" [href]="instagram" target="_blank"><i class="fab fa-instagram fa-lg me-3"></i></a>
+                    <a  [href]="whatsapp" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

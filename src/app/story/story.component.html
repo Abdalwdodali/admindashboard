@@ -1,0 +1,80 @@
+<div class="container-fluid StroyMain">
+    <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+    <div *ngFor="let value of array_get_story; let i = index" class="card">   <div class="tp-wrapper" >
+      <div class="tp-box"   [@flipState]="value.flip"  >      
+        <div class="tp-box__side tp-box__front" >
+          <div class="Cards_">
+        <button  class="menu_" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon style="color:#aaa">notes</mat-icon>
+              </button>
+     <img class="card-img-top" class='image_1' src={{value.image}}  (click)="appearProduct(value.product)"   alt="Card image cap" >
+     <div class="nameStory">{{value.titel}}</div>
+     <div class="eye_story" (click)="viewStory(value.id,value)"><mat-icon>remove_red_eye</mat-icon><span> &nbsp;{{Howwhached(value.id)}}</span></div>
+     <div class="card-body">
+       <mat-menu #menu="matMenu" class="select">
+        <button (click)="deleteStory(value.id)" mat-menu-item>
+          <mat-icon >delete</mat-icon>
+          <span >delete</span>
+        </button>
+        <button mat-menu-item (click)="downloadImage(value.image)">
+            <mat-icon>get_app</mat-icon>
+          <span>Download</span>
+        </button>
+      </mat-menu>
+     </div>
+    </div>
+  </div>
+    <div class="tp-box__side tp-box__back" style="width:100%;height:100%;background-color: #FFF;">
+      <div class="back" (click)="viewStory(value.id,value)" style="position: absolute;top:-10px;left:5px"><mat-icon>keyboard_backspace</mat-icon></div>
+           <ul class="WhoWhatch" >
+              <li *ngFor="let user of viewstorybyId(value.id); let i = index">
+                <div [routerLink]="['/story', user.viewer]"><div class="name">{{user.username}}</div>
+                
+                <label  *ngIf="user.imageUser!=null then trueBlock;else falseBlock"></label>
+                <ng-template  #trueBlock><div class="image"><img [src]="user.imageUser" style="border-radius: 50%;width:40px;height:40px"></div></ng-template>
+                <ng-template #falseBlock><div class="image"><img style="width:40px;border-radius: 50%;height:40px;" src="../../assets/images/user.png"/></div></ng-template>
+              </div>
+              </li>
+           </ul>
+          </div>
+    </div>
+   </div>
+  </div>
+
+   <div class="add_boxStory" style="justify-content: center;align-items: center;display: none;"> 
+    <div (click)="back_()" class="back_"><mat-icon>keyboard_backspace</mat-icon></div>
+   <div class="box_inside">
+    <div class="form-group">
+        <div class="image-upload image_1">
+          <label  for="input_label_1">
+        <label *ngIf="imageFileNameStory;then trueBlock; else falseBlock"></label>
+          <ng-template #trueBlock>
+        <img  [src]="imageFileNameStory"  style="height:300px;width:100%;" ></ng-template>
+        <ng-template #falseBlock><mat-icon  class="set_image_big">library_add</mat-icon></ng-template>
+      </label>
+        <input type="file" class="form-control" id="input_label_1" (change)="onFileSelectedStory($event)" #fileInput_1 hidden>
+      </div>
+    </div>
+  
+    <input matInput placeholder="Name story" value="" type="text" maxlength="10"  [(ngModel)]="titelStory"  aria-describedby="emailHelp" class="InputTittle">
+                
+
+    <div class="ChoiceStory">
+    <div class="search">
+      <input type="text" placeholder="search.." [(ngModel)]="filterValue" (input)="filterList()" (click)="clickInput()" (click)="toggleDropdown()" class="choice"/>
+      <span class="search-icon"><i class="fa fa-search"></i></span></div>
+      <div class="custom-dropdown">
+       
+        <ul class="options" *ngIf="isDropdownOpen">
+          <li *ngFor="let option of listType" (click)="selectOption(option)">
+            <img [src]="option.image_1" alt="Option Image" style="height:20px;height:20px;margin-right: 10px;margin-left: 10px;"/>
+            <span>{{ option.name }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+<button  (click)="addStory()" class='btn btn-info ' style='background-color: #f7cb9c;border:none;color:#FFF;width:100%;border-radius: 0px;'   (click)="postStory()"><mat-icon>done</mat-icon><span style="position: relative;top:-6px;right:0px;">Add</span></button>
+  </div>
+</div>
+<div (click)="newStory()" class="new_story"><mat-icon>library_add</mat-icon><span style="margin-left:7px;position: relative;top:-4px;">add</span></div>
+</div>

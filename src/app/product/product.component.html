@@ -1,0 +1,71 @@
+<div class="displayProduct">
+    <div (click)="back_display()" class="back" style="margin-left: 10px;"><mat-icon>keyboard_backspace</mat-icon></div>
+    <div class="container-fluid" >
+      <div class="box">
+        <div class="rating" *ngIf="all_referance !== 0">
+          <span  *ngFor="let star of stars">
+           <ng-container  *ngIf="star <= all_referance ;else starsEmpty"><div class="star"><mat-icon>star</mat-icon></div></ng-container>
+           <ng-template #starsEmpty><div class="star"><mat-icon>star_border</mat-icon></div></ng-template>
+          </span>
+          <span class="refernceValue">{{all_referance}}</span>
+        </div>
+       
+      <div class="product">
+        <div class="image_1">
+          
+          
+          <label  *ngIf="offer then trueBlock;else falseBlock"></label>
+          <ng-template  #trueBlock><div class="price" style="color:rgb(75, 165, 75);">{{offer}}$</div><div class="price" style="text-decoration: line-through;top: 190px;">{{prise}}$</div>
+          </ng-template>
+          <ng-template #falseBlock><div class="price">{{prise}}$</div></ng-template>
+
+          
+    <svg id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1" class="background_product">
+      <defs><linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0"><stop id="stop1" stop-color="rgba(251.656, 251.656, 251.656, 1)" offset="0%">
+      </stop><stop id="stop2" stop-color="rgba(223, 183, 141, 1)" offset="100%"></stop>
+    </linearGradient></defs><path fill="url(#sw-gradient)" d="M21.8,-23.7C29.9,-19.1,39.5,-13.9,42.4,-6.2C45.3,1.6,41.7,11.8,35.8,19.5C29.9,27.2,21.8,32.4,13.2,35C4.6,37.5,-4.5,37.4,-12.5,34.4C-20.5,31.4,-27.5,25.7,-32.8,18.1C-38.1,10.6,-41.8,1.3,-40.4,-7.2C-39,-15.7,-32.5,-23.4,-25,-28.1C-17.4,-32.8,-8.7,-34.6,-0.9,-33.5C6.8,-32.4,13.6,-28.4,21.8,-23.7Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: all 0.3s ease 0s;"></path>
+  </svg>	<mat-icon (click)="right()" class="right">keyboard_arrow_right</mat-icon>
+  <h1>{{response_.name}}</h1>
+   <img (click)="next_image()" src={{imagesDisplay[counter]}} /><mat-icon class="left" (click)="left()">keyboard_arrow_left</mat-icon>
+  </div>  
+      </div>
+      <div class="color">
+        <ul *ngFor="let color of getProductsByName(response_.name,response_.type);let i = index">
+        <li *ngIf="color.nameColor" [ngClass]="{'first-item': i === 0}"  (click)="changeColor(event,color,i)" #event [style.background-color]="color.nameColor" style="box-shadow:0px 0px 2px 1px rgba(0,0,0,.2)"></li>
+      </ul></div>
+      <div class="description">
+        <h1>{{response_.name}}</h1>
+        <div [innerHTML]="description">{{description}}</div>
+      </div>
+  
+      <div class="commands">   
+        <div *ngFor="let value of filter_Commentcar" class="commans_box">
+          
+
+          <label  *ngIf="value.image!=null;then trueBlock;else falseBlock"></label>
+          <ng-template  #trueBlock><img [src]="value.image" alt="User Image" class="user-image" [routerLink]="['/product/',objectId,value.user]"/> </ng-template>
+          <ng-template #falseBlock><img  src="../../assets/images/user.png" alt="User Image" style="background-color:#FFF" class="user-image"/></ng-template>
+
+          <div class="comment">
+          <div class="user-info">
+            <span class="user-name">{{value.user}}</span>
+            <div class="rating">
+              <span  *ngFor="let star of stars">
+               <ng-container  *ngIf="star <= value.rating ;else starsEmpty"><div class="star"><mat-icon>star</mat-icon></div></ng-container>
+               <ng-template #starsEmpty><div class="star"><mat-icon>star_border</mat-icon></div></ng-template>
+              </span>
+            </div>
+          </div>
+          <div class="comment-text">
+          {{value.content}}
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="footer-svg_2">{{response_.name}}
+      </div>
+    
+      </div>
+      </div>
+   
+    </div>

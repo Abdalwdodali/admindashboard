@@ -1,0 +1,222 @@
+
+<div class="container-fluid" style="margin:0px;position: fixed;top:0px;bottom:0px;right:0px; overflow: hidden;background-color: rgb(255, 255, 255);z-index: 100;">
+    <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+    <div (click)="backChat()" class="backChat"><mat-icon>keyboard_backspace</mat-icon></div>
+ 
+    <div class="box">
+    <div class="users"> 
+        <ul class="user_massage">
+            <li *ngFor="let message of array_get_cars">  
+                <div (click)="getUserMessages_(message)" class="divEveryUser">
+                    <div class="image">
+                      <label  *ngIf="message.image!=null;then trueBlock;else falseBlock"></label>
+                     <ng-template  #trueBlock><img  style="width:40px;border-radius: 50%;height:40px;" [src]="message.image" alt="User Image"/></ng-template>
+                     <ng-template #falseBlock><img style="width:40px;border-radius: 50%;height:40px;" src="../../assets/images/user.png" alt="User Image"/></ng-template>
+                      </div>
+                    <div class='name'>{{message.name}}</div>
+                    
+
+                    <label  *ngIf="message.body;then trueBlockmessage;else falseBlockmessage"></label>
+                    <ng-template  #trueBlockmessage><div class='last_message'>{{message.body}}</div></ng-template>
+                    <ng-template #falseBlockmessage><div class='last_message'><div style="position: relative;">
+                      <mat-icon style="font-size: 20px;">camera_alt</mat-icon>
+                      <span style="position: absolute;;left:23px">Image</span></div></div></ng-template>
+                      <div  *ngIf="message.readReciever" style="width:20px;height:20px;background-color: #f7cb9c;position: absolute;top:30px;right:40px;border-radius: 50%;display: flex;justify-content: center;align-items: center;">{{message.readReciever}}</div>
+                    <div class='date_' style="color:#6d6d6d">{{message.timestamp}}</div>
+            
+                </div>
+                <div class='select'>
+                  <button   mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon style="color:#6d6d6d">more_vert</mat-icon>
+                      </button>
+                  <mat-menu #menu="matMenu" > 
+                    <button (click)="delete(message.nameId)" mat-menu-item>
+                      <mat-icon >delete</mat-icon>
+                      <span >delete</span>
+                    </button>
+                  </mat-menu>
+                </div>
+            </li>
+          </ul>
+          <div class="newChat" (click)="newChat()"><mat-icon style="font-size: 26x;">chat_bubble</mat-icon></div>
+          <div class="userList">
+            <div class="search" ><input type="text" placeholder="     search..........." [(ngModel)]="filterValue" (input)="filterList()"/></div>
+            <div class="li" *ngFor="let user of userList;let i = index" >
+              <div class="box" (click)="addChat(user)">
+                <div class="image">
+                  <label  *ngIf="user.profile!=null && user.profile.image!=null;then trueBlock;else falseBlock"></label>
+                 <ng-template  #trueBlock><img  style="width:40px;border-radius: 50%;height:40px;" [src]="user.profile.image" alt="User Image"/></ng-template>
+                 <ng-template #falseBlock><img style="width:40px;border-radius: 50%;height:40px;" src="../../assets/images/user.png" alt="User Image"/></ng-template>
+                  </div>
+              <div>{{user.username}}</div> 
+            </div>
+          </div>
+          </div>
+    </div>
+    <div class="chat" >
+      <div id="profile_userNavbar">
+        <div *ngFor="let message of image_user;let i = index">
+          <div *ngIf="i===0">  
+            <div>
+              <label  *ngIf="message;then trueBlock;else falseBlock"></label>
+             <ng-template  #trueBlock><img class="image" [src]="message" [routerLink]="['/user', object_id]" ></ng-template>
+             <ng-template #falseBlock><img class="image" src="../../assets/images/user.png" [routerLink]="['/user', object_id]" alt="User Image"/></ng-template>
+              </div>
+          </div>
+          <div *ngIf="i===1"><h1>{{message}}</h1> </div> 
+          <div class="call" *ngIf="i===4"><a style="text-decoration: none;" href="tel:{{message}}"><mat-icon class="call_Icon">call</mat-icon></a></div> 
+      </div>
+    </div>
+      <div class="messages"  #scrollContainer >
+      <div class="info_like"  *ngFor="let like of likes;let i = index">
+        <div *ngIf="i===0">{{like}}</div>
+        <div *ngIf="i===1">{{like}}</div>
+        <div *ngIf="i===2">{{like}}</div>
+      </div>
+        <ul>
+            <li *ngFor="let message of messages;let i = index" class="chat_one" >  
+              <div *ngIf="message.sender_id === otherUserId "   class="user" >
+               
+                <div class="BoxPutLike" (click)="overlay_()" #display style="display:none;">
+                <ul class="like_press">
+                  <li (click)="like(message,'❤️')">💞</li>
+
+                </ul>
+                <div class="Message" #messagess>
+                  <div class="BoxText" *ngIf="message.body">
+                <span class="message" style="float:left;color:#FFF"> {{ message.body }}</span>
+                <div class="delete_right" (click)="deleteMessage(message.id,i)"><mat-icon>delete_outline</mat-icon></div>
+              </div>
+                <div class="BoxImage"  *ngIf="message.imageMessage">
+                <img class="MessageImage" [src]="message.imageMessage">
+              </div>      
+              </div>
+              </div>
+                <div class="chat-container" style=" justify-content:right;" (mouseleave)="onMouseLeave_right()">
+                  <div class="delete_right" (click)="deleteMessage(message.id,i)"><mat-icon>delete_outline</mat-icon></div>
+                  <div class="chat-bubble" #mySpan  (click)="postpone_right(message.id,i,mySpan)"  (mousedown)="onPressStart_right(display,messagess)" (mouseup)="onPressEnd_right(display,messagess)">
+                    <div class="boxUser">
+                      <label *ngIf="message.sender_image!=null then trueBlockmessage;else falseBlockmessage"></label>
+                      
+                      <ng-template  #trueBlockmessage><img [src]="message.sender_image" alt="User Image" class="user-image"></ng-template>
+                      <ng-template #falseBlockmessage><img alt="User Image" class="user-image" src="../../assets/images/user.png"/></ng-template>
+                      
+                      
+                      </div>
+                    <div class="Message" #messagess>
+                      <div class="BoxText" *ngIf="message.body">
+                    <span class="message"> {{ message.body }}</span>
+                  </div>
+                    <div class="BoxImage"  *ngIf="message.imageMessage">
+                    <img class="MessageImage" [src]="message.imageMessage">
+                  </div>  
+                  <div class="like_one" *ngIf="message.likes && message.likes.length > 0">
+                    <div class="like_react"  [style.top.px]="like_.divTop" *ngFor="let like_ of message.likes">
+                    <div><span  (click)="show_like_info(like)">{{like_.like}}</span></div>
+                  </div>
+              
+                  </div>     
+                  </div>
+                  
+                  </div>
+         
+                </div>
+           
+              </div>
+              <div *ngIf="message.sender_id === userId" class="user">
+                <div class="BoxPutLike" (click)="overlay_()" #display style="display:none;">
+                  <ul class="like_press">
+                    <li (click)="like(message,'❤️')">💞</li>
+                  </ul>
+                  <div class="Message" #messagess>
+                    <div class="BoxText" *ngIf="message.body">
+                  <span class="message" style="color:#5c5c5c;float:left;" > {{ message.body }}</span>
+                  <div class="delete_left" (click)="deleteMessage(message.id,i)"><mat-icon>delete_outline</mat-icon></div>
+                </div>
+                  <div class="BoxImage"  *ngIf="message.imageMessage">
+                  <img class="MessageImage" [src]="message.imageMessage">
+                </div>      
+                </div>
+                
+                </div>
+                <div class="chat-container" (mouseleave)="onMouseLeave_left()">
+                  <div class="delete_left" (click)="deleteMessage(message.id,i)"><mat-icon>delete_outline</mat-icon></div>
+                  <div class="chat-bubble-another"  #mySpan (click)="postpone_left(message.id,i,mySpan)"  (mousedown)="onPressStart_left(display,messagess)" (mouseup)="onPressEnd_left(display,messagess)" >
+                    <div class="boxUser">
+                       <label *ngIf="message.sender_image!=null then trueBlockmessage;else falseBlockmessage"></label>
+                      
+                      <ng-template  #trueBlockmessage><img [src]="message.sender_image" alt="User Image" class="user-image"></ng-template>
+                      <ng-template #falseBlockmessage><img alt="User Image" class="user-image" src="../../assets/images/user.png"/></ng-template>
+
+                    </div>
+                    <div class="Message" #messagess>
+                    <div class="BoxText" *ngIf="message.body">
+                    <span class="message-another"> {{ message.body }}</span>
+                  </div>
+                    <div class="BoxImage"  *ngIf="message.imageMessage">
+                    <img  class="MessageImage" [src]="message.imageMessage">
+                  </div>
+                  <div class="like" *ngIf="message.likes && message.likes.length > 0">
+                    <div  class="like_react"  [style.top.px]="like_.divTop" *ngFor="let like_ of message.likes">
+                      <div><span  (click)="show_like_info(like)">{{like_.like}}</span></div>
+                  </div>
+                  </div>
+                  </div>    
+                  </div>         
+                </div>  
+              </div>
+            </li>
+          </ul>
+        </div>
+          <div class="send">
+            <div *ngIf="selectedImage" class="imageFileChice">
+              <img [src]="selectedImage" alt="Selected Image">
+            </div>
+            <div class="smils">
+              <div class="smiley-list">
+              <span class='smiles' *ngFor="let smiley of smileys" (click)="selectSmiley(smiley)">
+                <div>{{ smiley }}</div>
+              </span>
+            </div>
+          </div>
+          <div class="boxChat">
+            <div class="input-logo" (click)="smile_list()">😃</div> 
+            
+              <div class="input-container" >
+               <mat-icon (click)="imageInput.click()">attach_file</mat-icon>
+                <input type="file"  #imageInput #fileInput (change)="onFileSelectedImageSend($event)" style="display: none;">
+              </div>
+          
+            <textarea type="text" [(ngModel)]="newMessage" class="send_input" id="myTextarea" appLetterLimit (input)="adjustTextareaHeight()"></textarea>  
+            
+            <mat-icon class="send_message" (click)="sendMessage(newMessage)">send</mat-icon>
+      </div>
+       
+          </div>
+    </div>
+
+    </div>
+
+    <div id="profile_user">
+      <div *ngFor="let message of image_user;let i = index">
+        <div *ngIf="i===0" class="ImageProfile">  
+          <div>
+            <label  *ngIf="message;then trueBlock;else falseBlock"></label>
+           <ng-template  #trueBlock><img class="image" [src]="message" [routerLink]="['/mailBox', object_id]" ></ng-template>
+           <ng-template #falseBlock><img class="image" src="../../assets/images/user.png" [routerLink]="['/mailBox', object_id]" alt="User Image"/></ng-template>
+            </div>
+        </div>
+        <div  *ngIf="i===1"><h1>{{message}}</h1></div>  
+        <div class="email" *ngIf="i===2">{{message}} </div> 
+        <div class="call" *ngIf="i===3"><a href="tel:{{message}}"><mat-icon class="call_Icon">call</mat-icon></a></div>
+        <div class="email" *ngIf="i===4" >{{message}} </div>  
+        
+        
+        
+          </div>
+    </div>
+    <div class="save_all">was deleted</div>
+
+  </div>
+
+

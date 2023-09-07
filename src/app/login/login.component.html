@@ -1,0 +1,126 @@
+<div class="body">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+    <div class="container">
+                <div class="row">
+                    <div class="col-md-11 mt-60 mx-md-auto">
+                        <div class="login-box bg-white pl-lg-5 pl-0">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-md-6">
+                                    <div class="form-wrap bg-white">
+                                        <h4 class="btm-sep pb-3 mb-5" style="cursor: pointer;">Login</h4>
+                                        <form class="form" method="post" action="#" id='login' (ngSubmit)="login()">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group position-relative">
+                                                        <mat-form-field class="example-full-width" style="width:100%;" >
+                                                            <mat-label class="input_label">name</mat-label>
+                                                            <input matInput placeholder="name" value="" type="text" id="username" [(ngModel)]="username" name='username'  required>
+                                                          </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group position-relative">
+                                                        <mat-form-field class="example-full-width" style="width:100%;">
+                                                            <mat-label>password</mat-label>
+                                                            <input matInput type="password" id="password"  placeholder="Password" name='password' [(ngModel)]="password" required>
+                                                          </mat-form-field>
+          
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="error" class="error">{{ error }}</div>
+                                                <div class="col-12 text-lg-right">
+                                             
+                                                </div>
+                                                <div class="col-12 mt-30">
+                                                    <button type="submit" id="submit" class="login_click" >Sign In
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <form class="form" method="post" action="#" (ngSubmit)="create()" id="create">
+                                            <div class="row">
+                                                <div class="col-12" >
+                                                    <div class="form-group position-relative" >
+                                                        <mat-form-field class="example-full-width" style="width:100%;">
+                                                            <mat-label>Username</mat-label>
+                                                            <input matInput  type="text" id="username"  [(ngModel)]="new_username" name='new_username' placeholder="username" required>
+                                                          </mat-form-field>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-12" >
+                                                    <div class="form-group position-relative" >
+                                                        <mat-form-field class="example-full-width" style="width:100%;">
+                                                            <mat-label>first name</mat-label>
+                                                            <input matInput  type="text" id="password" placeholder="first name" name='first_name' [(ngModel)]="first_name" required>
+                                                          </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group position-relative">
+                                                        <mat-form-field class="example-full-width" style="width:100%;">
+                                                            <mat-label>last name</mat-label>
+                                                            <input matInput  type="text" id="password" placeholder="last name" name='last_name' [(ngModel)]="last_name" required>
+                                                          </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group position-relative">
+                                                        <mat-form-field class="example-full-width" style="width:100%;">
+                                                            <mat-label>email</mat-label>
+                                                            <input matInput  type="email" id="password"  placeholder="email" name='new_email' [(ngModel)]="new_email" required>
+                                                          </mat-form-field>
+                                                 
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group position-relative">
+                                                        <mat-form-field class="example-full-width" style="width:100%;">
+                                                            <mat-label>password</mat-label>
+                                                            <input matInput   type="password" id="password"  placeholder="Password" name='new_password' [(ngModel)]="new_password" required>
+                                                          </mat-form-field>
+                                                     
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group position-relative">
+                                                        <mat-form-field class="example-full-width" style="width:100%;">
+                                                            <mat-label>repeat password</mat-label>
+                                                            <input matInput  type="password" id="password" placeholder="repeaat" name='new_password_2' [(ngModel)]="new_password_2" required>
+                                                          </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="error" class="error">{{ error }}</div>
+                                                <div class="col-12 text-lg-right">
+                                                </div>
+                                                <div class="col-12 mt-30">
+                                                    <button type="submit" id="submit" class="create_click">Create
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="content text-center">
+                                        <div class="border-bottom pb-5 mb-5">
+    
+                                            <a id="signUp" class="btn btn-custom">Sign up</a>
+                                        </div>
+                                      
+                                        <div class="socials">
+                                            <div class="facebook"style="font-size: 23px;margin-top: 6px">	<mat-icon>facebook</mat-icon></div>
+                                            <div class="insta fab fa-instagram" style="font-size: 23px;margin-top: 6px;"></div>
+                                            <div class="whatsapp fab fa-github" style="font-size: 23px;margin-top: 6px;"></div>
+                                            <div class="twitter fab fa-twitter" style="font-size: 23px;margin-top: 6px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="save_all">creating new user failed</div>  
+        </div>
+    

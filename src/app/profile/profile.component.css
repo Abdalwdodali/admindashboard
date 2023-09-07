@@ -1,0 +1,21 @@
+.gradient-custom {background-color:#FFF;}
+.gradient-custom div{color:#f7cb9c;}
+
+.back{cursor: pointer;transition: all .4s;width:30px;height:30px;margin-top: 20px;color:#f7cb9c;margin-left:20px;z-index: 34;position: absolute;}
+.back:hover{transform: scale(1.2,1.2);transition: all .4s;color: #27c227;}
+
+.socialMedia{height:50px;  display: flex;
+    justify-content: center;padding-top: 13px;
+   }
+.socialMedia a{font-size:27px;color:#f7cb9c;transition: all .5s;}
+.socialMedia a:hover{font-size:27px;color:#5fe653;transition: all .5s;transform: scale(1.2,1.2);}
+.socialMedia .twitter:hover{font-size:27px;color:#44b5e2;transition: all .5s;}
+.socialMedia .facebook:hover{font-size:27px;color:#3169e2;transition: all .5s;}
+.socialMedia .instagram:hover{font-size:27px;color:#E4405F;transition: all .5s;}
+
+.backgroundImage{border-top-left-radius: .5rem;border-top-right-radius: .5rem;width: 100%;height:150px;position: absolute;top:-48px;left:0px;border-bottom: 2px solid #FFF;}
+.ImageProfile{border-radius:50%;position: relative;z-index:2;left:0px;top:50px;border: 2px solid #FFF;width:90px;height:90px;transition: all .5s;}
+.ImageProfile:hover{transform: scale(1.2,1.2);transition: all .5s;}
+.tittel{font-size:28px;background-color:#f7cb9c;color:#FFF;height:50px;text-align: center;padding-top:14px;transition: all .5s;}
+.tittel:hover{transform: scale(1.03,1.03);transition: all .5s;cursor: pointer;}
+.textarea_status_label{width:50%;left:25%;position: relative;}

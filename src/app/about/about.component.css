@@ -1,0 +1,81 @@
+#image{
+    background-color: #f7cb9c;
+    position: relative;
+    top:25%;
+    left:50%;
+    transform: translate(-50%,-300px);
+    width:300px;opacity: 0;
+    height:300px;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .back{cursor: pointer;transition: all .4s;width:30px;height:30px;margin-top: 20px;color:#f7cb9c}
+  .back:hover{transform: scale(1.2,1.2);transition: all .4s;color: #27c227;}
+  .photo{background-image: url(../../assets/images/wadoud_about.jpg);background-size: cover;width:300px;height:300px;border-radius: 50%;cursor: pointer;;transition: all .4s;}
+  .photo:hover{transform: scale(1.1,1.1);transition: all .4s;}
+  .photo:active{transform: scale(1,1);transition: all .4s;}
+  .footer-svg {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      z-index: -1;
+    }
+  
+    .info{
+      width:550px;height:200px;transform: translate(-50%,-50%);top:25%;left:50%;  display: flex; flex-direction: column; position: relative;
+    }
+    .mat-icon{
+      position: relative;top:5px;
+    }
+    .info .col-sm div{margin-top:2px;padding-left:8px;width:100%;  flex: 1; height:40px;color:#f7cb9c;font-size: 17px;cursor: pointer;transition: background-size 900ms;}
+    .info .col-sm div:hover{transform: scale(1.2,1.2);transition: all .4s;}
+  
+    .footer-svg .footer-shape {
+      fill: #dfb78d;
+      animation: footerAnimation_2 15s infinite;
+    }
+    .media{width:200px;height:50px;position: relative;bottom:-31%;left:50%;transform: translate(-50%,-50%);z-index:30; display: flex; flex-direction: row;}
+    .media div{text-align: center;height:100%; flex: 1;cursor: pointer;transition: all .4s; color:#FFF;}
+    .media div:hover{transform: scale(1.4,1.4);transition: all .4s; }
+    
+    
+    
+    .footer-svg_2  .footer-shape {
+      fill: #f7cb9c;
+      animation: footerAnimation 15s infinite;
+    }
+    
+    .footer-svg_2 {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      z-index: -1;
+    }
+    @keyframes footerAnimation {
+      0% {
+        d: path("M0,100 C400,-50 700,350 2200,100 L2200,500 L0,500 Z");
+      }
+      50% {
+        d: path("M0,100 C400,250 700,-150 2200,100 L2200,500 L0,500 Z");
+      }
+      100% {
+        d: path("M0,100 C400,-50 700,350 2200,100 L2200,500 L0,500 Z");
+      }
+    }
+    @keyframes footerAnimation_2 {
+      0% {
+        d: path("M0,100 C400,-25 600,350 2200,100 L2200,500 L0,500 Z");
+      }
+      50% {
+        d: path("M0,100 C400,200 600,-150 2200,100 L2200,500 L0,500 Z");
+      }
+      100% {
+        d: path("M0,100 C400,-25 600,350 2200,100 L2200,500 L0,500 Z");
+      }
+    }
+    

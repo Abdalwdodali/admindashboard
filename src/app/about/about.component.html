@@ -1,0 +1,41 @@
+<div class="container-fluid" style="margin:0px;position: fixed;top:0px;bottom:0px;right:0px; overflow: hidden;background-color: rgb(255, 255, 255);z-index: 100;">
+    <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+  <div id="image">
+    <div class="photo"></div>
+  </div>
+  
+  
+  <div class="info">
+  <div class="row">
+    <div class="col-sm">
+      <div class="carear"><mat-icon>work</mat-icon>&nbsp;&nbsp;informatiker</div>
+      <div class="name"><mat-icon>account_box</mat-icon>&nbsp;&nbsp;Abdulwadoud Al Saadi</div>
+      <div class="location" style="height:60px;"><mat-icon style="top:18px;">location_on</mat-icon>&nbsp;&nbsp;<span>Tuchschererweg&nbsp;2</span><br><span style='margin-left:35px;'>Luckenwalde 14943</span></div>
+    </div>
+    <div class="col-sm">
+      <div class="email"><mat-icon>alternate_email</mat-icon>&nbsp;&nbsp;abdalwdodali@gmail.com</div>
+      <div class="number"><mat-icon>call</mat-icon>&nbsp;&nbsp;+49 176 48721194</div>
+    </div>
+  </div>
+  </div>
+  <div class="media">
+    <div (click)="Facebook()" class="facebook">	<mat-icon>facebook</mat-icon></div>
+    <div  (click)="Instagram()" class="insta fab fa-instagram" style="font-size: 23px;margin-top: 6px;"></div>
+    <div  (click)="Github()" class="whatsapp fab fa-github" style="font-size: 23px;margin-top: 6px;"></div>
+    <div  (click)="Twitter()" class="twitter fab fa-twitter" style="font-size: 23px;margin-top: 6px;"></div>
+    <i class="fa-brands fa-twitter"></i>
+  </div>
+  
+  <div style="position: absolute;height:30px;background-color: #f1caa0;bottom:0px;z-index:20;width:100%;left:0px;text-align: center;color:#FFF;padding-top:5px">abdulwadoud Ali Al Saadi</div>
+  <svg class="footer-svg" xmlns="http://www.w3.org/2000/svg" style="z-index:10;position: fixed;">
+      <path class="footer-shape" d="M0,100 C400,-50 700,350 2200,100 L1200,500 L0,500 Z"></path>
+    </svg>
+    
+    <svg class="footer-svg_2" xmlns="http://www.w3.org/2000/svg">
+      <path class="footer-shape" d="M0,100 C400,-25 600,350 2200,100 L1200,500 L0,500 Z"></path>
+    </svg>
+  <!-- <form (submit)="submitPayment()">
+      <input type="number" [(ngModel)]="amount" placeholder="Amount">
+      <button type="submit">Pay</button>
+    </form>--> 
+  </div>

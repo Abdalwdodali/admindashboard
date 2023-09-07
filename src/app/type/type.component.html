@@ -1,0 +1,157 @@
+
+<div class="products">
+    <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+
+
+<div *ngFor="let obj of uniqueProducts;" class="card" >
+      <div class="tp-wrapper" >
+                    <div class="tp-box"  [@flipState]="obj.flip" >
+                      <div class="tp-box__side tp-box__front">
+                        <div *ngIf="obj.offer" class="offer">
+                        </div>
+                        <button  class="menu_" mat-icon-button [matMenuTriggerFor]="menu">
+                          <mat-icon style="color:#f7cb9c">notes</mat-icon>
+                            </button>
+                   <img class="card-img-top" class='image_1' src={{obj.image_1}} #display  alt="Card image cap" (click)="toggleFlip(obj)">
+                  <div class="color">
+                    <label *ngFor="let objColor of getProductsByName(obj.name); let i = index" >
+                      <div  *ngIf="objColor.nameColor" #event [style]="{'background-color':objColor.nameColor,'cursor':'pointer','box-shadow':'0px 0px 2px 1px rgba(0,0,0,.2)'}" (click)="changeProductColor(event,obj, objColor,i)" [ngClass]="{'first-item': i === 0}"></div>
+                    </label>
+                  </div>
+                 <div class="price">{{obj.prise}}€</div>
+                 <div class="display"  [routerLink]="['/product/', obj.id]">display</div>
+                 <div class="display2"  style="display:none" (click)="newRoute(obj.id)">display</div>
+                   <div class="card-body">
+                     <mat-menu #menu="matMenu" class="select">
+                      <button  (click)="DeleteProduct(obj.id)" mat-menu-item>
+                        <mat-icon >delete</mat-icon>
+                        <span >delete</span>
+                      </button>
+                      <button (click)="UpdateProduct(obj.id,obj.type)" mat-menu-item  >
+                          <mat-icon style="color:rgb(14, 185, 29)">update</mat-icon>
+                        <span>Update</span>
+                      </button>
+                      <button (click)="ColorProduct(obj.id,obj.type,obj.name)" mat-menu-item  >
+                        <mat-icon style="color:rgb(14, 185, 29)">add</mat-icon>
+                      <span>ColorProduct</span>
+                    </button>
+                      <button mat-menu-item (click)="DownloadImage(obj.image_1)">
+                          <mat-icon>get_app</mat-icon>
+                        <span>Download</span>
+                      </button>
+                    </mat-menu>
+                   </div>
+                      </div>
+                      <div class="tp-box__side tp-box__back">
+                        <div class="back" (click)="toggleFlip(obj)" style="position: absolute;top:-10px;left:-10px"><mat-icon>keyboard_backspace</mat-icon></div>
+                        <img class="card-img-top" class='image_1' src={{obj.image_1}} #showCar   alt="Card image cap">
+                        <div class="imagesSmall">
+                          <label><img src="{{obj.image_1}}" (click)="showDive(showCar,obj.image_1)"></label>
+                          <label *ngIf="obj.image_2"><img src="{{obj.image_2}}" (click)="showDive(showCar,obj.image_2)"></label>
+                          <label *ngIf="obj.image_3"><img src="{{obj.image_3}}" (click)="showDive(showCar,obj.image_3)"></label>
+                          <label *ngIf="obj.image_4"><img src="{{obj.image_4}}" (click)="showDive(showCar,obj.image_4)"></label>
+</div></div> </div> </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="add_box_product" style="display: none;justify-content: center;align-items: center;">
+                <div (click)="back_products()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+                <div>  
+                <div class="box_inside">
+                    <div class="form-group">
+                      <div class="ImagesAll">
+                        <div class="image-upload image_1">
+                          <label  for="input_label_pro">
+                        <label *ngIf="imageFileNameColor1;then trueBlock; else falseBlock"></label>
+                          <ng-template #trueBlock>
+                        <img  [src]="imageFileNameColor1"  style="height:300px;width:280px;" ></ng-template>
+                        <ng-template #falseBlock><mat-icon  class="set_image_big">library_add</mat-icon></ng-template>
+                      </label>
+                        <input type="file" class="form-control" id="input_label_pro" (change)="onFileSelectedColor1($event)" #fileInput_pro hidden>
+                      </div>
+                      <div class="image-upload image_2">
+                        <label  for="input_label_2">
+                      <label *ngIf="imageFileNameColor2;then trueBlock_2; else falseBlock_2"></label>
+                        <ng-template #trueBlock_2>
+                      <img  [src]="imageFileNameColor2"  class="set_image"></ng-template>
+                      <ng-template #falseBlock_2><mat-icon class="set_image">library_add</mat-icon></ng-template>
+                    </label>
+                      <input type="file" class="form-control" id="input_label_2" (change)="onFileSelectedColor2($event)" #fileInput_2  hidden>
+                    </div>
+                    <div class="image-upload image_3">
+                      <label  for="input_label_3">
+                    <label *ngIf="imageFileNameColor3;then trueBlock_3; else falseBlock_3"></label>
+                      <ng-template #trueBlock_3>
+                    <img  [src]="imageFileNameColor3"   class="set_image"></ng-template>
+                    <ng-template #falseBlock_3><mat-icon class="set_image">library_add</mat-icon></ng-template>
+                  </label>
+                    <input type="file" class="form-control" id="input_label_3" (change)="onFileSelectedColor3($event)"  #fileInput_3 hidden>
+                  </div>
+                  <div class="image-upload image_4">
+                    <label  for="input_label_4">
+                  <label *ngIf="imageFileNameColor4;then trueBlock_4; else falseBlock_4"></label>
+                    <ng-template #trueBlock_4>
+                  <img  [src]="imageFileNameColor4"  class="set_image"></ng-template>
+                  <ng-template #falseBlock_4><mat-icon class="set_image">library_add</mat-icon></ng-template>
+                </label>
+                  <input type="file" class="form-control" id="input_label_4" (change)="onFileSelectedColor4($event)"  #fileInput_4 hidden>
+                </div></div>
+                      
+                      
+                      
+                    </div>
+                    <ul  class="ChoiceColor">
+                      <li *ngFor="let color of Colors" #event  (click)="GetColor(event,color.viewValue)" [value]="color.value" [style]="{ 'background-color': color.viewValue}">
+         
+                      </li> 
+                    </ul>
+                  
+
+                    <input matInput placeholder="name*" value="" type="text"  [(ngModel)]="nameColorAdd"  aria-describedby="emailHelp" class="InputTittleprise name" maxlength="10">
+                    <input matInput placeholder="prise*" value="" type="number"  [(ngModel)]="priseColorAdd"  aria-describedby="emailHelp" class="InputTittleprise prise">
+                    <input matInput placeholder="offer*" value="" type="number"  [(ngModel)]="offerColorAdd"  aria-describedby="emailHelp" class="InputTittleprise offer">
+                    <input matInput placeholder="mainPrice*" value="" type="number"  [(ngModel)]="mainPriceColorAdd"  aria-describedby="emailHelp" class="InputTittleprise mainPrice">
+                    <input matInput placeholder="profit*" value="" type="number"  [(ngModel)]="profitColorAdd"  aria-describedby="emailHelp" class="InputTittleprise profit">
+                    <input matInput placeholder="tax*" value="" type="number"  [(ngModel)]="taxColorAdd"  aria-describedby="emailHelp" class="InputTittleprise tax">
+            
+                
+                   <textarea matInput placeholder="description*" type="text"  [(ngModel)]="descriptionColorAdd" class='ClassTextArea description'></textarea>
+
+
+    
+                      
+
+                  </div>
+                  <button *ngIf="UpdateAdd=='Update'" class='btn btn-info' style='background-color: #f7cb9c;border:none;color:#FFF;width:500px;border-radius: 0px;' (click)="Update()"><mat-icon>done</mat-icon><span style="position: relative;top:-6px;right:0px;">Update</span></button>
+                  <button *ngIf="UpdateAdd=='Add'" class='btn btn-info' style='background-color: #f7cb9c;border:none;color:#FFF;width:500px;border-radius: 0px'   (click)="add($event)"><mat-icon>done</mat-icon><span style="position: relative;top:-6px;right:0px;">Add</span></button>
+          
+                </div>
+              </div>
+
+
+              <div class="save_all">was deleted</div>  
+       </div>
+            

@@ -1,0 +1,201 @@
+<div class="dachboard_main">
+    <div class="BoxHome">
+      <div (click)="showPreviousImage()" class="carousel-button " class="before"><mat-icon>keyboard_arrow_left</mat-icon></div>
+      <div (click)="showNextImage()" class="carousel-button " class="next" ><mat-icon>keyboard_arrow_right</mat-icon></div>
+      <div class="catigure" id="catigure">
+        <div *ngFor="let obj of listCategory">
+          <div class="car animations" (click)="OneCatigure(obj.id,obj.name)" routerLink="/category/{{obj.name}}">
+              <img class="titel" [src]="obj.image"/>
+              <button  class="menu_" style="left:70px;" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon style="color:#aaa">notes</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button (click)="deleteCategory(obj.id)" mat-menu-item>
+                      <mat-icon style="color:#F00">delete</mat-icon>
+                      <span >delete all</span>
+                    </button>
+                    <button mat-menu-item (click)="DownloadImage(obj.image)">
+                        <mat-icon>get_app</mat-icon>
+                      <span>Download</span>
+                    </button>
+                    <button mat-menu-item  (click)="AddType(obj.id)"  class="add_update">
+                      <mat-icon>add_to_photos</mat-icon>
+                    <span>add Type</span>
+                  </button>
+                  </mat-menu>
+              <div class='count'>
+               </div>
+              <h1>{{obj.name}}</h1>
+          </div> 
+        </div>
+      </div></div>
+      <div class="ChartType">
+      <div class="BoxTypeBySearch">
+        <div class="search">
+          <input type="text" placeholder="          search..........." [(ngModel)]="filterValue" (input)="filterList()" (click)="clickInput()"/>
+          <span class="search-icon"><i class="fa fa-search"></i></span></div>
+      <div class="BoxType">
+            <div *ngFor="let obj of listType"  class="card_marke" >
+            <button  class="menu_" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon style="color:#aaa">notes</mat-icon>
+            </button>
+      
+            <mat-menu #menu="matMenu">
+              <button (click)="deleteType(obj.id,obj.name)" mat-menu-item>
+                <mat-icon style="color:#F00">delete</mat-icon>
+                <span >delete all</span>
+              </button>
+              <button mat-menu-item (click)="DownloadImage(obj.image)">
+                  <mat-icon>get_app</mat-icon>
+                <span>Download</span>
+              </button>
+              <button mat-menu-item  (click)="AddProduct(obj.id)"  class="add_update">
+                <mat-icon>add_to_photos</mat-icon>
+              <span>add {{obj.name}}</span>
+            </button>
+            </mat-menu>
+      
+      
+            <img class="card-img-top" src={{obj.image}}  [routerLink]="['/category/type', obj.id]" >
+            <div class="card-body">
+              <h5 class="card-title">{{obj.name}}</h5>
+            </div>
+          </div>
+          <div class="backgroundSearch" (click)="backgroundSearch()"></div>
+          </div>  
+        </div>
+        <div class='chartBoxPie'> 
+          <div class="BoxPie">
+          <canvas baseChart width="400" height="400"
+          [type]="'pie'"
+          [datasets]="pieChartDatasets"
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [legend]="pieChartLegend">
+        </canvas>
+      </div></div>
+          <div class='chartBox'><div class="Box">
+            <canvas baseChart 
+            [width]="chartWidth"
+            [height]="chartHeight"
+            [type]="'line'"
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend">
+            [style]="canvasStyle">
+          </canvas>
+        </div></div>
+  </div>
+    
+                <div class="add_box_" style="display: none;"> 
+                    <div (click)="back_()" class="back_"><mat-icon>keyboard_backspace</mat-icon></div>
+                <div class="box_inside">
+                 <div class="form-group">
+                     <div class="image-upload image_1">
+                       <label  for="input_label_1">
+                     <label *ngIf="imageFileName2;then trueBlock; else falseBlock"></label>
+                       <ng-template #trueBlock>
+                     <img  [src]="imageFileName2"  style="height:300px;width:280px;" ></ng-template>
+                     <ng-template #falseBlock><mat-icon  class="set_image_big">library_add</mat-icon></ng-template>
+                   </label>
+                     <input type="file" class="form-control" id="input_label_1" (change)="onFileSelected_1($event)"  accept="image/png" #fileInput_1 hidden>
+                     
+                   </div>
+                
+    
+                
+                 </div>
+                
+                   <input matInput placeholder="enter name Type" value="" type="text" maxlength="10"  [(ngModel)]="titelAddType"  aria-describedby="emailHelp" class="InputTittle">
+                
+                
+                
+                <button  (click)="AddTypePost()" class='btn btn-info ' style='background-color: #f7cb9c;border:none;color:#FFF;width:90%;position: absolute;bottom:20px;left:5%' 
+                  ><mat-icon>done</mat-icon><span style="position: relative;top:-6px;right:0px;">Add</span></button>
+                </div>
+                </div>     
+          
+  
+                <div class="add_box_product" style="display: none;justify-content: center;align-items: center;">
+                  <div (click)="back_products()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
+                  <div>
+                                       <div class="box_inside">
+                      <div class="form-group">
+                        <div class="ImagesAll">
+                          <div class="image-upload image_1">
+                            <label  for="input_label_prooo">
+                          <label *ngIf="imageFileNameaddProduct;then trueBlock_1; else falseBlock_1"></label>
+                            <ng-template #trueBlock_1>
+                          <img  [src]="imageFileNameaddProduct"  style="height:300px;width:280px;" ></ng-template>
+                          <ng-template #falseBlock_1><mat-icon  class="set_image_big">library_add</mat-icon></ng-template>
+                        </label>
+                          <input type="file" class="form-control" id="input_label_prooo" (change)="onFileSelected1addproduct($event)" #input_label_prooo hidden>
+                        </div>
+                        <div class="image-upload image_2">
+                          <label  for="input_label_2">
+                        <label *ngIf="imageFileName_2;then trueBlock_2; else falseBlock_2"></label>
+                          <ng-template #trueBlock_2>
+                        <img  [src]="imageFileName_2"  class="set_image"></ng-template>
+                        <ng-template #falseBlock_2><mat-icon class="set_image">library_add</mat-icon></ng-template>
+                      </label>
+                        <input type="file" class="form-control" id="input_label_2" (change)="onFileSelected2($event)" #fileInput_2  hidden>
+                      </div>
+                      <div class="image-upload image_3">
+                        <label  for="input_label_3">
+                      <label *ngIf="imageFileName3;then trueBlock_3; else falseBlock_3"></label>
+                        <ng-template #trueBlock_3>
+                      <img  [src]="imageFileName3"   class="set_image"></ng-template>
+                      <ng-template #falseBlock_3><mat-icon class="set_image">library_add</mat-icon></ng-template>
+                    </label>
+                      <input type="file" class="form-control" id="input_label_3" (change)="onFileSelected3($event)"  #fileInput_3 hidden>
+                    </div>
+                    <div class="image-upload image_4">
+                      <label  for="input_label_4">
+                    <label *ngIf="imageFileName4;then trueBlock_4; else falseBlock_4"></label>
+                      <ng-template #trueBlock_4>
+                    <img  [src]="imageFileName4"  class="set_image"></ng-template>
+                    <ng-template #falseBlock_4><mat-icon class="set_image">library_add</mat-icon></ng-template>
+                  </label>
+                    <input type="file" class="form-control" id="input_label_4" (change)="onFileSelected4($event)"  #fileInput_4 hidden>
+                  </div></div>
+                        
+                        
+                        
+                      </div>
+                    
+                      <ul  class="ChoiceColor">
+                            <li *ngFor="let color of Colors" #event  (click)="GetColor(event,color.viewValue)" [value]="color.value" [style]="{ 'background-color': color.viewValue}">
+               
+                            </li> 
+                          </ul>
+                       
+                        <input matInput placeholder="name*" value="" type="text"  [(ngModel)]="name"  aria-describedby="emailHelp" class="InputTittle name" maxlength="10">
+                        <input matInput placeholder="prise*" value="" type="number"  [(ngModel)]="prise"  aria-describedby="emailHelp" class="InputTittleprise prise">
+                        <input matInput placeholder="offer*" value="" type="number"  [(ngModel)]="offer"  aria-describedby="emailHelp" class="InputTittleprise offer">
+                        <input matInput placeholder="mainPrice*" value="" type="number"  [(ngModel)]="mainPrice"  aria-describedby="emailHelp" class="InputTittleprise mainPrice">
+                        <input matInput placeholder="profit*" value="" type="number"  [(ngModel)]="profit"  aria-describedby="emailHelp" class="InputTittleprise profit">
+                        <input matInput placeholder="tax*" value="" type="number"  [(ngModel)]="tax"  aria-describedby="emailHelp" class="InputTittleprise tax">
+                
+                    
+                       <textarea matInput placeholder="description*" type="text"  [(ngModel)]="description" class='ClassTextArea description'></textarea>
+                    
+  
+                       
+                    
+  
+                  
+                    </div>
+                    <button  class='btn btn-info' style='background-color: #f7cb9c;border:none;color:#FFF;width:500px;border-radius: 0px;'   (click)="add($event)"><mat-icon>done</mat-icon><span style="position: relative;top:-6px;right:0px;">Add</span></button>
+                  </div>
+                  </div>
+                  <div class="save_all">was deleted</div>  
+                  
+                  <div class="firstentry"  style="font-size: 160;display: none;">
+                    <div class="titel">
+                    <div class="hallo">welcome</div>
+                  </div>
+                    <div class="username">{{username_login}}</div>
+                   
+                    <div (click)="firstEntry()" class="skip">done</div></div>   
+  </div>
