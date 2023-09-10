@@ -1,4 +1,4 @@
-<section class="vh-100" style="background-color: #FFF;position: fixed;right:0px;left:0px;top:0px;bottom:0px;z-index:33;">
+<section class="vh-100" style="background-color: #FFF;position: fixed;right:0px;left:0px;top:0px;bottom:0px;z-index:33;overflow-y: auto;">
     <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
   
     <div class="container py-5 h-100">
@@ -41,7 +41,7 @@
                 <div class="textarea_status_label" style="font-size: 25px;margin-top: 15px;">{{status}}</div>
                 <textarea class="textarea_status" style="font-size: 25px;margin-top: 15px;" [(ngModel)]="status">{{status}}</textarea>
                
-                <mat-icon style="color: #f7cb9c;width:100%;"  class="far fa-edit mb-5" (click)="StartEdit()">edit</mat-icon>
+                <mat-icon style="color: #f7cb9c;width:100%;"  class="far fa-edit mb-5" (click)="StartEdit()"></mat-icon>
                 <button class='save_change'  (click)="save()">save</button>
               </div>
               <div class="col-md-8" style="color:#f7cb9c;">

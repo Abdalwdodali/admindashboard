@@ -28,7 +28,7 @@ import { ProductComponent } from './product/product.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { MapComponent } from './map/map.component';
 import { AboutAppComponent } from './about-app/about-app.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 const routes: Routes = [
   { path: 'mailBox', component: MailboxComponent  },
   { path: 'product/:id', component: ProductComponent  },
@@ -71,7 +71,7 @@ const routes: Routes = [
   ],
   imports: [RouterModule.forRoot(routes,{ onSameUrlNavigation: 'reload' }),
     BrowserModule,
-    AppRoutingModule,GoogleMapsModule,ImageCropperModule,HttpClientModule, BrowserAnimationsModule,MatIconModule,FormsModule,MatInputModule,MatSelectModule,MatMenuModule,MatButtonModule,
+    AppRoutingModule,GoogleMapsModule,FontAwesomeModule,ImageCropperModule,HttpClientModule, BrowserAnimationsModule,MatIconModule,FormsModule,MatInputModule,MatSelectModule,MatMenuModule,MatButtonModule,
     MatTableModule,NgChartsModule
   ],
   providers: [],

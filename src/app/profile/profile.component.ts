@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-
+import { AuthUsersService } from '../auth-users.service';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  constructor(private route: Router,private http:HttpClient,private router: ActivatedRoute,private backRoute:ActivatedRoute){}
+  constructor(private route: Router,private http:HttpClient,private router: ActivatedRoute,private backRoute:ActivatedRoute,private authService:AuthUsersService){}
   back(){
     this.objectId_ = this.backRoute.snapshot.paramMap.get('id');
     this.objectName = this.backRoute.snapshot.paramMap.get('Name');
@@ -41,8 +41,10 @@ objectName:any;objectId_:any;
    telephone_Number:any; address:any;
    objectId:any;
    ngOnInit(){
+    const access_token= this.authService.getAccessToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
     this.objectId = this.router.snapshot.paramMap.get('id');
-     this.http.get('https://abdulwadoud.pythonanywhere.com/api/users/'+this.objectId+'/').subscribe((Response:any)=>{
+     this.http.get('https://abdulwadoud.pythonanywhere.com/api/users/'+this.objectId+'/',{headers}).subscribe((Response:any)=>{
       this.response_=Response;
       this.image_background=this.response_.profile.image_background;
       this.image=this.response_.profile.image;

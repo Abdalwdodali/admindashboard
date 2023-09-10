@@ -12,7 +12,7 @@
   
   .back{cursor: pointer;transition: all .4s;width:30px;height:30px;margin-top: 20px;color:#f7cb9c}
   .back:hover{transform: scale(1.2,1.2);transition: all .4s;color: #27c227;}
-  .photo{background-image: url(../../assets/images/wadoud_about.jpg);background-size: cover;width:300px;height:300px;border-radius: 50%;cursor: pointer;;transition: all .4s;}
+  .photo{background-image: url(../../assets/images/wadoud_about.png);background-size: cover;width:300px;height:300px;border-radius: 50%;cursor: pointer;;transition: all .4s;}
   .photo:hover{transform: scale(1.1,1.1);transition: all .4s;}
   .photo:active{transform: scale(1,1);transition: all .4s;}
   .footer-svg {
@@ -25,7 +25,7 @@
     }
   
     .info{
-      width:550px;height:200px;transform: translate(-50%,-50%);top:25%;left:50%;  display: flex; flex-direction: column; position: relative;
+      width:550px;height:auto;transform: translate(-50%,-50%);top:25%;left:50%;  display: flex; flex-direction: column; position: relative;
     }
     .mat-icon{
       position: relative;top:5px;
@@ -36,9 +36,10 @@
     .footer-svg .footer-shape {
       fill: #dfb78d;
       animation: footerAnimation_2 15s infinite;
-    }
-    .media{width:200px;height:50px;position: relative;bottom:-31%;left:50%;transform: translate(-50%,-50%);z-index:30; display: flex; flex-direction: row;}
-    .media div{text-align: center;height:100%; flex: 1;cursor: pointer;transition: all .4s; color:#FFF;}
+    } 
+    .media{width:140px;height:30px;position: relative;bottom:-31%;left:50%;transform: translate(-50%,-50%);z-index:30; display: flex; flex-direction: row;
+      z-index: 50;}
+    .media div{text-align: center; flex: 1;cursor: pointer;transition: all .4s; color:#FFF;margin-left: 5px;}
     .media div:hover{transform: scale(1.4,1.4);transition: all .4s; }
     
     
@@ -79,3 +80,9 @@
       }
     }
     
+@media screen  and (min-width: 0px) and (max-width: 575px) {
+  .info .col-sm div{padding-left: 30%;}
+  .footer-svg_2{display:none}
+  .footer-svg{display: none;}
+  .media div{color:#dfb78d}
+    }

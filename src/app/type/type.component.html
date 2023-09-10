@@ -2,7 +2,7 @@
 <div class="products">
     <div (click)="back()" class="back"><mat-icon>keyboard_backspace</mat-icon></div>
 
-
+    <div class="BoxType">
 <div *ngFor="let obj of uniqueProducts;" class="card" >
       <div class="tp-wrapper" >
                     <div class="tp-box"  [@flipState]="obj.flip" >
@@ -50,7 +50,7 @@
                           <label *ngIf="obj.image_2"><img src="{{obj.image_2}}" (click)="showDive(showCar,obj.image_2)"></label>
                           <label *ngIf="obj.image_3"><img src="{{obj.image_3}}" (click)="showDive(showCar,obj.image_3)"></label>
                           <label *ngIf="obj.image_4"><img src="{{obj.image_4}}" (click)="showDive(showCar,obj.image_4)"></label>
-</div></div> </div> </div></div>
+</div></div> </div> </div></div></div>
 
 
 

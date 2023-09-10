@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TweenMax } from 'gsap';
 import { HttpClient } from '@angular/common/http';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+library.add(faInstagram);
+library.add(fab);
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -28,16 +33,16 @@ submitPayment() {
     // Implement Stripe's payment methods and confirmations here
   }
   Facebook() {
-    window.open('https://www.facebook.com', '_blank');
+    window.open('https://www.facebook.com/abd.alwdod.50', '_blank');
   }
   Twitter() {
-    window.open('https://www.facebook.com', '_blank');
+    window.open('https://api.whatsapp.com/send?phone=+49017648721194&text=i+am+Abdulwadoud+Alsaadi%F0%9F%98%81', '_blank');
   }
   Github() {
-    window.open('https://www.facebook.com', '_blank');
+    window.open('https://github.com/Abdalwdodali', '_blank');
   }
   Instagram() {
-    window.open('https://www.twitter.com', '_blank');
+    window.open('https://www.instagram.com/abdelwdod/?igshid=MzRlODBiNWFlZA%3D%3D', '_blank');
   }
   ngOnInit(): void{ 
   const image = document.querySelector('#image');

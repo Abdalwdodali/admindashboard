@@ -5,15 +5,15 @@
       <input type="text" placeholder="          search..........." [(ngModel)]="filterValue" (input)="filterList()"/>
       <span class="search-icon"><i class="fa fa-search"></i></span></div>
       <div class="UserBox">
-    <table mat-table [dataSource]="dataSource" class="table_">
+    <table mat-table [dataSource]="dataSource" class="table_" style="margin-bottom: 200px;">
       <ng-container matColumnDef="username" >
         <th mat-header-cell *matHeaderCellDef style="width:250px;color:#FFF;background-color: #fcdbb7;">Username </th>
         <td mat-cell *matCellDef="let element"  [routerLink]="['/user', element.id]"> {{element.username}} </td>
       </ng-container>
 
       <ng-container matColumnDef="email" >
-        <th mat-header-cell *matHeaderCellDef style="color:#FFF;background-color: #fcdbb7;"> Email </th>
-        <td mat-cell *matCellDef="let element" [routerLink]="['/user', element.id]"> {{element.email}} </td>
+        <th mat-header-cell *matHeaderCellDef style="color:#FFF;background-color: #fcdbb7;" class="EmailShow"> Email </th>
+        <td mat-cell *matCellDef="let element"  [routerLink]="['/user', element.id]" class="EmailShow"> {{element.email}} </td>
       </ng-container>
  
       <ng-container matColumnDef="image"> 

@@ -65,7 +65,7 @@ onFileSelected_1(event: any){this.fileImageProfile = event.target.files[0];
     this.authService.getUserIdByUsername(this.username).subscribe((data:any) => {
 
       this.userId=data.user_id;
-      this.http.get('https://abdulwadoud.pythonanywhere.com/api/users/'+this.userId+'/').subscribe((Response:any)=>{
+      this.http.get('https://abdulwadoud.pythonanywhere.com/api/users/'+this.userId+'/',{headers}).subscribe((Response:any)=>{
         this.response_=Response;
         this.image_background=this.response_.profile.image_background;
         this.image=this.response_.profile.image;
@@ -161,7 +161,9 @@ const body = {
 };
   this.authService.getUserIdByUsername(this.username).subscribe((data:any) => {
     this.userId=data.user_id;
-    this.http.patch("https://abdulwadoud.pythonanywhere.com/api/profile/"+this.userId+'/', body).subscribe(()=>{
+    const access_token= this.authService.getAccessToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+    this.http.patch("https://abdulwadoud.pythonanywhere.com/api/profile/"+this.userId+'/', body,{headers}).subscribe(()=>{
       $('.edit').hide();$('.editBox').hide();
   });
 });
@@ -189,7 +191,9 @@ const body = {
     this.formData.append('user', this.userId);
       this.authService.getUserIdByUsername(this.username).subscribe((data:any) => {
         this.userId=data.user_id;
-        this.http.patch("https://abdulwadoud.pythonanywhere.com/api/profile/"+this.idProfile+'/', this.formData).subscribe(()=>{
+        const access_token= this.authService.getAccessToken();
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+        this.http.patch("https://abdulwadoud.pythonanywhere.com/api/profile/"+this.idProfile+'/', this.formData,{headers}).subscribe(()=>{
           $('.edit').hide();$('.editBox').hide();
           $('.save_all').show();
           setTimeout(() => {  
@@ -197,7 +201,9 @@ const body = {
           }, 1000);
       },
       error=>{
-         this.http.post('https://abdulwadoud.pythonanywhere.com/api/profile/', this.formData).subscribe((response:any) => {
+        const access_token= this.authService.getAccessToken();
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+         this.http.post('https://abdulwadoud.pythonanywhere.com/api/profile/', this.formData,{headers}).subscribe((response:any) => {
          $('.edit').hide();$('.editBox').hide();
          $('.save_all').show();
          setTimeout(() => {  

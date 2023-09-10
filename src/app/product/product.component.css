@@ -1,4 +1,4 @@
-.back{cursor: pointer;transition: all .4s;width:30px;height:30px;margin-top: 20px;position: fixed;color:#dfb78d}
+.back{cursor: pointer;transition: all .4s;width:30px;height:30px;margin-top: 20px;position: fixed;color:#dfb78d;z-index: 30;}
 .back:hover{transform: scale(1.2,1.2);transition: all .4s;color: #27c227;}
 .menu_{position: absolute;z-index:33;right:0px}
 .example-full-width{width:100%}
@@ -17,20 +17,24 @@
 .left:active,.right:active{transform: scale(1,1);}
 .right{right:0px;}
 .left{left:0px}
-.commands{width:100%;height:auto;z-index:2;margin-top:90px;position: relative;border-top:1px solid #c0c0c0;padding-top:20px}
+
+.commands{width:100%;height:auto;z-index:2;margin-top:90px;position: relative;border-top:1px solid #c0c0c0;padding-top:20px;}
+.commans_box{width:100%;height:auto;margin-bottom: 10px;}
+.comment{width: calc(100% - 50px);height:auto;background-color: rgba(201, 201, 201, 0.1);margin-bottom:4px;border-radius: 20px;padding:20px;position: relative;top:0px;left:50px;}
+
 .displayProduct .image_1{width:90%;height:400px;margin-left:5%;position: absolute;top:0px;display: flex;
   justify-content: center;align-items: center;}
 .displayProduct .image_1 img{position: absolute;width:300px;height:300px;transition: all 1.2s;z-index: 1;cursor: pointer;top:100px }
 .background_product{width:100%;height:450px;position:absolute;transition: all .5s;top:-50px;animation: move_background 3s infinite; 
 }
 @keyframes move_background{50%{transform: scale(1.1,1.1);}}
-.displayProduct .image_1 h1{position: absolute;width:auto;height:50px;left:50%;top:80px;font-size:38px;;transition: all .5s;z-index:5;color:#dfb78d;text-shadow: 2px 2px 4px rgba(0,0,0,.6);}
+.displayProduct .image_1 h1{position: absolute;width:auto;height:50px;left:40%;top:80px;font-size:38px;;transition: all .5s;z-index:5;color:#dfb78d;text-shadow: 2px 2px 4px rgba(0,0,0,.6);}
 .displayProduct .image_1 h1:hover{transform: scale(1.2,1.2);transition: all .5s;}
-.comment{width:90%;height:auto;background-color: rgba(201, 201, 201, 0.1);margin-bottom:4px;border-radius: 20px;padding:20px;position: relative;top:0px;right:-70px}
+
 .user-info{width:100%;height:60px;}
 .commands img{width:45px;height:45px;border-radius: 50%;position: relative;float:left;background-color:rgba(201, 201, 201, 0.1);}
 .comment-text{width:100%;height:auto;}
-.commans_box{width:100%;height:auto;margin-bottom: 10px;}
+
 .rating {width:200px;height:50px;position: absolute;display: inline-block;right:0px}
 .star {display: inline-block;width: 20px;height: 20px;color: #e4b481;cursor: pointer;background-size: cover;transition: all .3s}
 .star:hover{transform: scale(1.5,1.5);transition: all .3s}

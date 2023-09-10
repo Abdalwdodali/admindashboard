@@ -74,15 +74,26 @@ $(document).ready(function () {
 }
 username:any;
 counterHamburger=false;
+hideNavbar(){
+ 
+  $('.ListNavbar').slideUp();
+  $('.behindList').hide();
+  $('.barTwo').css('opacity','1');
+  $('.barOne').css('transform','translate(0, 15px) rotate(0deg)');
+  $('.barThree').css('transform','translate(0, -15px) rotate(0deg)');
+  this.counterHamburger=false;
+}
 Hamburger(){
   if(this.counterHamburger==false){$('.ListNavbar').slideDown();$('.behindList').show();
   $('.barTwo').css('opacity','0');
   $('.barOne').css('transform','translate(0, 8px) rotate(45deg)');
-  $('.barThree').css('transform','translate(0, -8px) rotate(-45deg)');this.counterHamburger=true;}
+  $('.barThree').css('transform','translate(0, -8px) rotate(-45deg)');
+  this.counterHamburger=true;}
 else if(this.counterHamburger==true){$('.ListNavbar').slideUp();$('.behindList').hide();
   $('.barTwo').css('opacity','1');
   $('.barOne').css('transform','translate(0, 15px) rotate(0deg)');
-  $('.barThree').css('transform','translate(0, -15px) rotate(0deg)');this.counterHamburger=false;}}
+  $('.barThree').css('transform','translate(0, -15px) rotate(0deg)');
+  this.counterHamburger=false;}}
   screenWidth: any;
   screenHeight: any;
 

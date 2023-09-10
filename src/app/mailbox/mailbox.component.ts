@@ -196,22 +196,27 @@ getUserMessages_(object_:any){
      this.username= this.authService.getUsername()
    this.authService.getUserIdByUsername(this.username).subscribe((data) => {
      this.userId=data.user_id;
-     this.http.get("https://abdulwadoud.pythonanywhere.com/users/"+this.userId+"/messages/"+this.otherUserId+"/").subscribe((data: any) => {
+     const access_token= this.authService.getAccessToken();
+     const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+     this.http.get("https://abdulwadoud.pythonanywhere.com/users/"+this.userId+"/messages/"+this.otherUserId+"/",{headers}).subscribe((data: any) => {
 
      this.messages = data;
       for(let i=0;i<data.length;i++){
+        const access_token= this.authService.getAccessToken();
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
         if(data[i].sender_id!=this.userId){
           this.formDataUpdate = new FormData();
           this.formDataUpdate.append('readReciever', 'readed');
-          this.http.patch("https://abdulwadoud.pythonanywhere.com/messages/"+data[i].id+"/",this.formDataUpdate).subscribe(()=>{
+          this.http.patch("https://abdulwadoud.pythonanywhere.com/messages/"+data[i].id+"/",this.formDataUpdate,{headers}).subscribe(()=>{
           });
-         
       }}
-
-      this.http.get('https://abdulwadoud.pythonanywhere.com/Boxmessages/'+this.userId).subscribe((Response:any)=>{
+     
+      this.http.get('https://abdulwadoud.pythonanywhere.com/Boxmessages/'+this.userId+"/",).subscribe((Response:any)=>{
         this.array_get_cars=Response;
       for(let j=0;j<Response.length;j++){
-        this.http.get("https://abdulwadoud.pythonanywhere.com/users/"+this.userId+"/messages/"+Response[j].nameId+"/").subscribe((data: any) => {
+        const access_token= this.authService.getAccessToken();
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+        this.http.get("https://abdulwadoud.pythonanywhere.com/users/"+this.userId+"/messages/"+Response[j].nameId+"/",{headers}).subscribe((data: any) => {
           this.counterMessagenotRead=0;
           for(let i=0;i<data.length;i++){
             if(data[i].sender_id!=this.userId && data[i].readReciever==''){
@@ -220,8 +225,9 @@ getUserMessages_(object_:any){
           Response[j].readReciever=this.counterMessagenotRead;
         });
       }});
-
-      this.http.get('https://abdulwadoud.pythonanywhere.com/Boxmessages/'+this.userId).subscribe((Response:any)=>{
+      const access_token= this.authService.getAccessToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+      this.http.get('https://abdulwadoud.pythonanywhere.com/Boxmessages/'+this.userId,{headers}).subscribe((Response:any)=>{
         this.array_get_cars=Response;
 
         for(let i=0;i<Response.length;i++){
@@ -305,7 +311,9 @@ this.authService.getUserIdByUsername(this.username).subscribe((data) => {
   (error)=>{
       for(let i=0;i<message.likes.length;i++){
 if(message.likes[i].user==this.username){
-  this.http.patch("https://abdulwadoud.pythonanywhere.com/Like/"+message.likes[i].id+'/', body).subscribe(()=>{
+  const access_token= this.authService.getAccessToken();
+const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+  this.http.patch("https://abdulwadoud.pythonanywhere.com/Like/"+message.likes[i].id+'/', body,{headers}).subscribe(()=>{
         this.getUserMessages(this.otherUserId);
         this.get();
      
@@ -397,7 +405,9 @@ $('.smils').css('height','600px');$('.imageFileChice').show();
       this.formData__.append('body', message);
       if(this.fileImageMessage){
       this.formData__.append('imageMessage', this.fileImageMessage);}
-       this.http.post("https://abdulwadoud.pythonanywhere.com/messages/", this.formData__).subscribe(()=>{
+      const access_token= this.authService.getAccessToken();
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+       this.http.post("https://abdulwadoud.pythonanywhere.com/messages/", this.formData__,{headers}).subscribe(()=>{
         
         this.getUserMessages(this.otherUserId);
         this.get();
@@ -448,8 +458,9 @@ $('.smils').css('height','600px');$('.imageFileChice').show();
           this.username= this.authService.getUsername()
           this.authService.getUserIdByUsername(this.username).subscribe((data) => {
             this.userId=data.user_id;
-           
-            this.http.get("https://abdulwadoud.pythonanywhere.com/users/"+this.userId+"/messages/"+Response[0].nameId+"/").subscribe((data: any) => {
+            const access_token= this.authService.getAccessToken();
+            const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+            this.http.get("https://abdulwadoud.pythonanywhere.com/users/"+this.userId+"/messages/"+Response[0].nameId+"/",{headers}).subscribe((data: any) => {
               this.messages = data; 
               this.image_user=[];
               this.image_user.push(Response[0].image);
@@ -462,7 +473,9 @@ $('.smils').css('height','600px');$('.imageFileChice').show();
         });
 
         for(let j=0;j<Response.length;j++){
-          this.http.get("https://abdulwadoud.pythonanywhere.com/users/"+this.userId+"/messages/"+Response[j].nameId+"/").subscribe((data: any) => {
+          const access_token= this.authService.getAccessToken();
+          const headers = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+          this.http.get("https://abdulwadoud.pythonanywhere.com/users/"+this.userId+"/messages/"+Response[j].nameId+"/",{headers}).subscribe((data: any) => {
             this.counterMessagenotRead=0;
             for(let i=0;i<data.length;i++){
               if(data[i].sender_id!=this.userId && data[i].readReciever==''){

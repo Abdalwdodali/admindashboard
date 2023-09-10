@@ -3,8 +3,6 @@
   <div id="image">
     <div class="photo"></div>
   </div>
-  
-  
   <div class="info">
   <div class="row">
     <div class="col-sm">
@@ -18,14 +16,13 @@
     </div>
   </div>
   </div>
-  <div class="media">
-    <div (click)="Facebook()" class="facebook">	<mat-icon>facebook</mat-icon></div>
-    <div  (click)="Instagram()" class="insta fab fa-instagram" style="font-size: 23px;margin-top: 6px;"></div>
-    <div  (click)="Github()" class="whatsapp fab fa-github" style="font-size: 23px;margin-top: 6px;"></div>
-    <div  (click)="Twitter()" class="twitter fab fa-twitter" style="font-size: 23px;margin-top: 6px;"></div>
-    <i class="fa-brands fa-twitter"></i>
+
+  <div class="media" style="position: absolute;bottom:30px;z-index:20;;text-align: center;">
+    <div (click)="Facebook()" >	<img style="background-image: url(../../assets/images/faceboolk.png);width:100%;height:100%;background-size: cover;"></div>
+    <div  (click)="Instagram()" ><img style="background-image: url(../../assets/images/nstagram.png);width:100%;height:100%;background-size: cover;"></div>
+    <div  (click)="Github()" ><img style="background-image: url(../../assets/images/github.png);width:100%;height:100%;background-size: cover;"></div>
+    <div  (click)="Twitter()" ><img style="background-image: url(../../assets/images/whatsapp.png);width:100%;height:100%;background-size: cover;"></div>
   </div>
-  
   <div style="position: absolute;height:30px;background-color: #f1caa0;bottom:0px;z-index:20;width:100%;left:0px;text-align: center;color:#FFF;padding-top:5px">abdulwadoud Ali Al Saadi</div>
   <svg class="footer-svg" xmlns="http://www.w3.org/2000/svg" style="z-index:10;position: fixed;">
       <path class="footer-shape" d="M0,100 C400,-50 700,350 2200,100 L1200,500 L0,500 Z"></path>
@@ -34,8 +31,5 @@
     <svg class="footer-svg_2" xmlns="http://www.w3.org/2000/svg">
       <path class="footer-shape" d="M0,100 C400,-25 600,350 2200,100 L1200,500 L0,500 Z"></path>
     </svg>
-  <!-- <form (submit)="submitPayment()">
-      <input type="number" [(ngModel)]="amount" placeholder="Amount">
-      <button type="submit">Pay</button>
-    </form>--> 
+
   </div>

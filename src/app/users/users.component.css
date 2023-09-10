@@ -1,7 +1,7 @@
 .container-fluid{
     position: fixed;background-color: #FFF;width:100%;top:0px;left:0px;bottom: 0px;z-index: 33;
 }
-.back{cursor: pointer;transition: all .4s;width:30px;height:30px;margin-top: 20px;color:#fcdbb7;margin-bottom: 10px;}
+.back{cursor: pointer;transition: all .4s;width:30px;height:30px;margin-top: 20px;color:#fcdbb7;margin-bottom: 10px;z-index: 50;}
 .back:hover{transform: scale(1.2,1.2);transition: all .4s;color: #27c227;}
 
 
@@ -52,6 +52,9 @@
   
   @media screen and (max-width: 1000px) {
     .search{width:100%;}
+  }
+  @media screen  and (min-width: 0px) and (max-width: 500px) {
+    .EmailShow{display:none}
   }
   .photo{background-size: cover;width:300px;height:300px;border-radius: 50%;transition: all .4s;}
 
