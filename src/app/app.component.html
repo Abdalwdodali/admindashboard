@@ -87,14 +87,13 @@
 
  <ul class="ListNavbar">
   <li   routerLink="" (click)="hideNavbar()"><mat-icon >home</mat-icon><span style="width:130px;margin-left: 10px;">home</span></li>
-  <li  routerLink="mailBox"><mat-icon >mail</mat-icon><span style="width:130px;margin-left: 10px;">Mail Box</span></li>
-  <li  routerLink="story/"><mat-icon>slow_motion_video</mat-icon><span style="width:130px;margin-left: 10px;">Story</span></li>
-
-  <li  routerLink="map"><mat-icon>map</mat-icon><span style="width:130px;margin-left: 10px;">Map</span></li>
-  <li  (click)="ShowCategory()"><mat-icon>library_add</mat-icon><span style="width:130px;margin-left: 10px;">new category</span></li>
-  <li  routerLink="editProfile"><mat-icon>info</mat-icon><span style="width:130px;margin-left: 10px;">Profile</span></li>
-  <li routerLink="user"><mat-icon>verified_user</mat-icon><span style="width:130px;margin-left: 10px;">users</span></li>
-  <li routerLink="about"><mat-icon>info</mat-icon><span style="width:130px;margin-left: 10px;">about</span></li>
+  <li  routerLink="mailBox" (click)="hideNavbar()"><mat-icon >mail</mat-icon><span style="width:130px;margin-left: 10px;">Mail Box</span></li>
+  <li  routerLink="story/" (click)="hideNavbar()"><mat-icon>slow_motion_video</mat-icon><span style="width:130px;margin-left: 10px;">Story</span></li>
+  <li  routerLink="map" (click)="hideNavbar()"><mat-icon>map</mat-icon><span style="width:130px;margin-left: 10px;">Map</span></li>
+  <li  (click)="ShowCategory()" (click)="hideNavbar()"><mat-icon>library_add</mat-icon><span style="width:130px;margin-left: 10px;">new category</span></li>
+  <li  routerLink="editProfile" (click)="hideNavbar()"><mat-icon>info</mat-icon><span style="width:130px;margin-left: 10px;">Profile</span></li>
+  <li routerLink="user" (click)="hideNavbar()"><mat-icon>verified_user</mat-icon><span style="width:130px;margin-left: 10px;">users</span></li>
+  <li routerLink="about" (click)="hideNavbar()"><mat-icon>info</mat-icon><span style="width:130px;margin-left: 10px;">about</span></li>
   <li class="footer_" (click)="logOut()"><mat-icon>power_settings_new</mat-icon><span style="width:130px;margin-left: 10px;">Logout</span></li>
  </ul>
 </div>

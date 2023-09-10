@@ -74,8 +74,8 @@ $(document).ready(function () {
 }
 username:any;
 counterHamburger=false;
+
 hideNavbar(){
- 
   $('.ListNavbar').slideUp();
   $('.behindList').hide();
   $('.barTwo').css('opacity','1');
@@ -83,6 +83,17 @@ hideNavbar(){
   $('.barThree').css('transform','translate(0, -15px) rotate(0deg)');
   this.counterHamburger=false;
 }
+logOut(){
+  $('.ListNavbar').slideUp();
+  $('.behindList').hide();
+  $('.barTwo').css('opacity','1');
+  $('.barOne').css('transform','translate(0, 15px) rotate(0deg)');
+  $('.barThree').css('transform','translate(0, -15px) rotate(0deg)');
+  this.counterHamburger=false;
+  this.service.logout();
+  this.router.navigate(['/login']);
+  }
+
 Hamburger(){
   if(this.counterHamburger==false){$('.ListNavbar').slideDown();$('.behindList').show();
   $('.barTwo').css('opacity','0');
@@ -366,10 +377,7 @@ this.router.navigate(['/product/',Response.id]);
 },error=>{});
 }
 
-logOut(){
-this.service.logout();
-this.router.navigate(['/login']);
-}
+
 
 valueFromSender: any;
 onValueEmitted(value: string){
